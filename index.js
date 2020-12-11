@@ -48,8 +48,7 @@ connection.connect(function(err) {
 
 
 function runSearch() {
-	inquirer
-		.prompt({
+	inquirer.prompt({
 
 			name: "action",
 			type: "list",
@@ -70,31 +69,31 @@ function runSearch() {
 	.then(function(answer) {
 		switch (answer.action) {
 			case "Query all employees":
-				EmployeesQuery();
+				employeeQuery();
 				break;
 
 			case "Query employees by department":
-				DepartmentQuery();
+				departmentQuery();
 				break;
 
 			case "Query employees by manager":
-				QueryManagers();
+				managerQuery();
 				break;
 
 			case "Add employee":
-				AddEmployees();
+				addEmployee();
 				break;
 
 			case "Delete employee":
-				DeleteEmployees();
+				deleteEmployee();
 				break;
 
 			case "Update Role":
-				UpdateRole();
+				updateRole();
 				break;
 
 			case "Update Manager":
-				UpdateManager();
+				updateManager();
 				break;
 
 
@@ -121,7 +120,7 @@ function employeeQuery() {
 								}
 							});
 
-							connection.employeequery("SELECT * FROM employee", function(err, data) {
+							connection.employeeQuery("SELECT * FROM employee", function(err, data) {
 									console.table(data);
 									runSearch();
 								}),
@@ -130,8 +129,8 @@ function employeeQuery() {
 											console.table(data);
 											runSearch();
 										}),
-										function RoleQuery() {
-											connection.query("SELECT * FROM role", function(err, data) {
+										function roleQuery() {
+											connection.query("SELECT * FROM roleId", function(err, data) {
 													console.table(data);
 													runSearch();
 												}),
@@ -141,7 +140,21 @@ function employeeQuery() {
 															runSearch();
 														}),
 
-
+                                                        function deleteEmployee() {
+                                                            Connection.query("SELECT * FROM employee", function(err, data) {
+                                                                    console.table(data);
+                                                                    runSearch();
+                                                                }),
+                                                                function updateRole() {
+                                                                    Connection.query("SELECT * FROM roleId", function(err, data) {
+                                                                            console.table(data);
+                                                                            runSearch();
+                                                                        }),
+                                                                        function updateManager() {
+                                                                            Connection.query("SELECT * FROM managerId", function(err, data) {
+                                                                                    console.table(data);
+                                                                                    runSearch();
+                                                                                }),
 
 
 														function addEmployee() {
@@ -317,4 +330,4 @@ function employeeQuery() {
 													if(err) throw err;
 													console.table("Successfully Updated Manager");
 													connection.end();
-                                                }},),),)}}}}},),})};
+                                                }},),),)}}}}};}};}),})};
