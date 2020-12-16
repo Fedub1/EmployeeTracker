@@ -5,7 +5,7 @@ Developers are often tasked with creating interfaces that make it easy for non-d
 ## Instructions
 
 Design the following database schema containing three tables:
-
++
   
 Build a command-line application that at a minimum allows the user to:
 

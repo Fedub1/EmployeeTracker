@@ -23,24 +23,24 @@ VALUES
 ("Media Director", 50000, 5);
 
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, department_id)
 
 VALUES
 ("Serena", "Williams", 1, 1),
 ("Venus", "Williams", 2, 2),
-("Chris", "Everet", 3, NULL),
+("Chris", "Everet", 3, 2),
 ("Martina", "Navratilova", 4, 3),
 ("Steffi", "Graf", 4, 4),
 ("Maria", "Sharapova", 4, 5),
-("Naomi", "Osaka", 3, NULL),
+("Naomi", "Osaka", 3, 5),
 ("Jennifer", "Capriati", 1, 4),
-("Rafael", "Nadal",3, NULL),
-("Rodger", "Federer", 2, 4),
-("Andy", "Murray", 2, NULL),
-("Novak", "Djokovic", 2, NULL),
+("Rafael", "Nadal",3, 4),
+("Rodger", "Federer", 2, 1),
+("Andy", "Murray", 2, 3),
+("Novak", "Djokovic", 2, 3),
 ("John", "McEnroe", 5, 5),
-("Andy", "Roddick", 4, 1),
-("Ivan", "Lendl", 4, NULL),
+("Andy", "Roddick", 4, 4),
+("Ivan", "Lendl", 4, 2),
 ("Andre", "Agassi", 4, 2);
 
 
