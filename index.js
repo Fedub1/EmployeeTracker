@@ -18,8 +18,7 @@ var connection = mysql.createConnection({
 //Connect to MySql
 connection.connect(function (err) {
 	if (err) throw err;
-
-	console.log('Connected to MySQL!!');
+	// console.log("connected as id " + connection.threadId + "\n");
 	runSearch();
 });
 // const app = inquirer();
@@ -88,9 +87,9 @@ function runSearch() {
 					break;
 
 				
-				case "exit":
-        connection.end();
-        break;
+		// 		case "exit":
+        // connection.end();
+        // break;
 			}
 		});
 	}
@@ -103,40 +102,41 @@ function runSearch() {
 
 function employeeSearch() {
 	// console.log("Selecting all employees...\n");
-	connection.query("SELECT * FROM employee", function(err, res) {
-	  if (err) throw err;
+	connection.query("SELECT * FROM employee", function(err, data) {
+
+	//   if (err) throw err;
 	  // Log all results of the SELECT statement
-	  console.log(res);
-	  departmentSearch();
+	  console.table(data);
+	  employeeSearch();
 	});
   // logs the actual query being run
 //   console.log(res);
-}
+};
   function departmentSearch() {
 	// console.log("Selecting all department...\n");
-	connection.query("SELECT * FROM department", function(err, res) {
-	  if (err) throw err;
+	connection.query("SELECT * FROM department", function(err, data) {
+	//   if (err) throw err;
 	  // Log all results of the SELECT statement
-	  console.log(res);
-	  roleSearch();
-	}
+	  console.table(data);
+	  departmentSearch();
+	});
 // 	//   connection.end();
-	),
+};
   // logs the actual query being run
 //   console.log(query.sql);
 
   function roleSearch() {
 	// console.log("Selecting all roles...\n");
-	connection.query("SELECT * FROM role", function(err, res) {
-	  if (err) throw err;
+	connection.query("SELECT * FROM role", function(err, data) {
+	//   if (err) throw err;
 	  // Log all results of the SELECT statement
-	  console.log(res);
-	  addEmployee();
+	  console.table(data);
+	  roleSearch;
 	//   connection.end();
 	});
     // logs the actual query being run
 	// console.log(query.sql);
-// }
+ };
 //   function addEmployee() {
 // 	  console.log("Adding a new employee...\n");
 // 	  var query = connection.query(
@@ -279,4 +279,4 @@ function employeeSearch() {
 // 			console.log(res);
 // 			connection.end();
 // 		  });
-		}}
+		
