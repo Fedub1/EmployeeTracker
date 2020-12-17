@@ -22,7 +22,7 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
 	if (err) throw err;
 				
-	// console.log("connected as id " + connection.threadId + "\n");
+	console.log("connected as id " + connection.threadId + "\n");
 	runSearch();
 });
 	
@@ -33,18 +33,14 @@ connection.connect(function(err) {
 		type: "list",
 		message: "What would you like to do?",
 		choices: [
-			"Query all employees",
 			"Query all departments",
 			"Query all roles",
-			// "exit"
+			"Query all employees",
+			"exit"
 		]
 	})
 		.then(function(answer) {
 			switch (answer.action) {
-				case "View all employees":
-					employeeSearch();
-					break;
-
 				case "View all departments":
 					departmentSearch();
 					break;
@@ -53,33 +49,39 @@ connection.connect(function(err) {
 					roleSearch();
 					break;
 
+				case "View all employees":
+					employeeSearch();
+					break;
+
 				// case "exit":
 				// 	connection.end();
 				// 	break;
 
-function employeeSearch(){
-	console.log("Selecting all employee...\n");
-	connection.query("SELECT * FROM employee", function(err, data) { 
+function departmentSearch(){
+	console.log("Selecting all department...\n");
+	connection.query("SELECT * FROM department", function(err, data) { 
 	
-	// if (err) throw err;
+	if (err) throw err;
 	cTable(data);
-	departmentSearch();
+	roleSearch();
 	})
 }
-function departmentSearch(){
-		console.log("Selecting all department...\n");
-		connection.query("SELECT * FROM department", function(err, data) { 
+function roleSearch(){
+		console.log("Selecting all role...\n");
+		connection.query("SELECT * FROM role", function(err, data) { 
 		
-		// if (err) throw err;
+		if (err) throw err;
 		cTable(data);
-		roleSearch();
+		employeeSearch();
 		})
 	}
-function roleSearch(){
-			console.log("Selecting all role...\n");
-			connection.query("SELECT * FROM role", function(err, data) { 
-			// if (err) throw err;
+function employeeSearch(){
+			console.log("Selecting all employees...\n");
+			connection.query("SELECT * FROM employee", function(err, data) { 
+			if (err) throw err;
 			cTable(data);
-			  
+			runSearch();
 			})
-}};},)};
+}};
+},
+)};
