@@ -66,11 +66,11 @@ connection.connect(function(err) {
 					break;
 					  
 				case "Add role":
-					createRole();
+					addRole();
 					break;
 
 				case "Add employee":
-					createEmployee();
+					addEmployee();
 					break;
 				case "Update employee":
 						updateEmployee();
@@ -78,9 +78,12 @@ connection.connect(function(err) {
 				case "Delete employee":
 							deleteEmployee();
 							break;		
-				// case "exit":
-				// 	connection.end();
-				// 	break;
+				case "exit":
+					connection.end();
+					break;
+			}
+		});
+	}
 
 function departmentSearch(){
 	console.log("Selecting all departments...\n");
@@ -89,8 +92,9 @@ function departmentSearch(){
 	if (err) throw err;
 	console.table(data);
 	roleSearch();
-	})
+	});
 }
+
 function roleSearch(){
 	console.log("Selecting all roles...\n");
 	connection.query("SELECT * FROM role", function(err, data) { 
@@ -98,7 +102,7 @@ function roleSearch(){
 	if (err) throw err;
 	console.table(data);
 	employeeSearch();
-	})
+	});
 	}
 function employeeSearch(){
 	console.log("Selecting all employees...\n");
@@ -108,7 +112,7 @@ function employeeSearch(){
 	addDepartment();
 			}),
 		
-	
+		
 function addDepartment() {
 	
 	inquirer
@@ -183,7 +187,7 @@ function addDepartment() {
 			type: "manager",
 			message: "Enter employee manager id"
 			}])
-		}}
+		
 			.then(function(answer) {	
 				connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)", res.role),
 			[answer.first_name,
@@ -236,4 +240,4 @@ function addDepartment() {
 						
 						connection.end();
 					  		
-					  };});}})})},)}}})}
+					  };});}})})},)}}};

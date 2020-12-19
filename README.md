@@ -1,38 +1,24 @@
 # Employee Tracker
 
-Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. In this homework assignment, your challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.
+# Installation 
 
-## Instructions
+For this project, I created an employee tracker to help non-developmenters view and interact with information stored in databases. This application allows users to view stored data, as well as update and add new data.
 
-Design the following database schema containing three tables:
-+
-  
-Build a command-line application that at a minimum allows the user to:
+# Instructions
 
-  * Add departments, roles, employees
+Develop a command-line application that allows users to add departments, roles and employees.
 
-  * View departments, roles, employees
+Include option for users to view employees, roles and departments
 
-  * Update employee roles
+Allow option for users to update stored information..
 
-Bonus points if you're able to:
+This project utilizes Node.js, Inquirer, and MySQL
 
-  * Update employee managers
+# License
+MIT
 
-  * View employees by manager
-
-  * Delete departments, roles, and employees
-
-  * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
-
-We can frame this challenge as follows:
-
-```
-As a business owner
-I want to be able to view and manage the departments, roles, and employees in my company
-So that I can organize and plan my business
-```
-
+# Links
+https://github.com/Fedub1/EmployeeTracker
 
 
 
