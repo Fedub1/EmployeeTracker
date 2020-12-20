@@ -23,7 +23,7 @@ VALUES
 ("Media Director", 50000, 5);
 
 
-INSERT INTO employee (first_name, last_name, role_id, department_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 
 VALUES
 ("Serena", "Williams", 1, 1),

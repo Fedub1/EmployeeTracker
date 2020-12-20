@@ -40,7 +40,7 @@ connection.connect(function(err) {
 			"Add role",
 			"Add employee",
 			"Update employee",
-			"Delete Employee",
+			"Delete employee",
 
 
 
@@ -114,8 +114,8 @@ function addDepartment() {
 	inquirer
 	.prompt([
 		{
-			name: "department",
 			type: "input",
+			name: "department",
 			message: "Enter new department"
 		}])
 
@@ -137,19 +137,21 @@ runSearch();
 		inquirer
 	.prompt([
 		{
-			name: "title",
-			type: "input",
 			message: "Enter new role",
+			type: "input",
+			name: "title"
+			
 		},
 		{
-			name: "salary",
-			type: "number",
 			message: "Enter new salary",
+			type: "number",
+			name: "salary"
 		},
 		{
-			name: "department_id",
+			message: "Enter new department id",
 			type: "number",
-			message: "Enter new department id"
+			name: "department_id"
+			
 		}])
 
 				.then(function(answer) {	
@@ -158,13 +160,15 @@ runSearch();
 					[answer.title,
 					 answer.salary,
 					 answer.department_id],
-				function(err,data) {
+				function(err, data) {
 				if (err) throw err;
 				console.table(data);
 	// Call addEmployee AFTER the INSERT completes
-				})	
+					
+				
 	runSearch();
 		})
+	})	
 	}
 		// logs the actual query 
 						
@@ -172,24 +176,25 @@ runSearch();
 			inquirer
 			.prompt([
 				{
-			name: "first_name",
-			type: "input",
-			message: "Enter employee first name"
+				type: "input",
+				name: "first_name",
+				message: "Enter employee first name"
 				},
 				{
-			name: "last_name",
-			type: "input",
-			message: "Enter employee last name"
+			
+				type: "input",
+				name: "last_name",
+				message: "Enter employee last name"
 				},
 				{
-			name: "role_id",
-			type: "number",
-			message: "Enter employee role id"
+				type: "number",
+				name: "role_id",
+				message: "Enter employee role id"
 				},
 				{
-			name: "manager_id",
-			type: "manager",
-			message: "Enter employee manager id"
+				type: "number",
+				name: "manager_id",
+				message: "Enter employee manager id"
 			}])
 		
 			.then(function(answer) {	
@@ -204,8 +209,9 @@ runSearch();
 			
 				runSearch();
 			})
+		})
 		
-		
+			}
 			
 			// Call updateEmployee AFTER the INSERT completes
 			function updateEmployee() {
@@ -228,9 +234,10 @@ runSearch();
 				function(err,data) {
 					if (err) throw err;
 					console.table(data);
-				})
+				
 					runSearch();
 			})
+		})
 		}
 				function deleteEmployee() {
 					inquirer
@@ -250,4 +257,4 @@ runSearch();
 						
 						connection.end();
 					  		
-					  };})}},)};
+					  };})}
